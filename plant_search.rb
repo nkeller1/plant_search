@@ -1,16 +1,18 @@
 require 'sinatra/base'
 require 'faraday'
 require 'pry'
+require 'sinatra/config_file'
 
 class PlantSearch < Sinatra::Base
+  register Sinatra::ConfigFile
+   config_file './config/application.yml'
   # get '/' do
   #   'Hello world!'
   # end
-  # def index
+
     conn = Faraday.new(url: "https://trefle.io") do |faraday|
-      faraday.headers[:authorization] = 'MWkycXExWVRwWE91TDNzS0xMek9nUT09'
+      faraday.headers[:authorization] = ENV['TREFLE_API_KEY']
     end
-  # end
 
     response = conn.get("/api/plants/?common_name=rosemary")
 
