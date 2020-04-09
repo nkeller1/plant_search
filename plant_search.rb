@@ -10,17 +10,14 @@ class PlantSearch < Sinatra::Base
 
 
 		class Greeting
-			def self.connect 
-      		conn = Faraday.new(url: "https://trefle.io") do |faraday|
-        		faraday.headers[:authorization] = ENV['TREFLE_API_KEY']
-      		end
-
-      		response = JSON.parse(conn.get("/api/plants/?common_name=rosemary").body, symbolize_names: true)
+			def self.connect(name)
+      		conn = Faraday.get("https://www.growstuff.org/crops/#{name}.json")
+					JSON.parse(conn.body,  symbolize_names: true)
   		end
 		end
 
-	get '/' do
-		json Greeting.connect
+	get '/api/:name' do
+		json Greeting.connect(params[:name])
 	end
 
    run! if app_file == $0
