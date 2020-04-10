@@ -4,4 +4,4 @@ require 'bundler'
 Bundler.require
 
 require_relative './plant_search'
-run PlantSearch
+run Sinatra::PlantSearch

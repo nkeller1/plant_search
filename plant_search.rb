@@ -5,10 +5,6 @@ require 'sinatra/config_file'
 require 'sinatra/json'
 
 class PlantSearch < Sinatra::Base
-  register Sinatra::ConfigFile
-   config_file './config/application.yml'
-
-
 		class Greeting
 			def self.connect(name)
       		conn = Faraday.get("https://www.growstuff.org/crops/#{name}.json")
