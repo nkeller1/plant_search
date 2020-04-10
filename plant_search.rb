@@ -12,8 +12,8 @@ class PlantSearch < Sinatra::Base
   		end
 		end
 
-	get '/api/:name' do
-		json Greeting.connect(params[:name])
+	get '/' do
+		json Greeting.connect('tomato')
 	end
 
    run! if app_file == $0
