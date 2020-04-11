@@ -1,10 +1,10 @@
-require 'sinatra/base'
+require 'sinatra'
 require 'faraday'
 require 'pry'
 require 'sinatra/config_file'
 require 'sinatra/json'
 
-class PlantSearch < Sinatra::Base
+class PlantSearch < Sinatra::Application
   register Sinatra::ConfigFile
    config_file './config/application.yml'
 
@@ -16,9 +16,12 @@ class PlantSearch < Sinatra::Base
   		end
 		end
 
+	get '/' do
+		"Hi"
+	end
+
 	get '/api/:name' do
 		json Greeting.connect(params[:name])
 	end
 
-   run! if app_file == $0
 end
