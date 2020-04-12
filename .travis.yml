@@ -5,5 +5,3 @@ dist: trusty
 before_install:
   - gem install bundler
   - export CXX="g++-4.8"
-
-script: ./.travis.sh
