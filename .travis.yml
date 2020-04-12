@@ -3,3 +3,5 @@ language:
 dist: trusty
 script:
 - ruby search_test.rb
+gemfile:
+  - Gemfile
