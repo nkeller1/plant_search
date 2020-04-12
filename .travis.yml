@@ -1,5 +1,9 @@
 language:
   - ruby
 dist: trusty
-script:
-- ruby search_test.rb
+
+before_install:
+  - gem install bundler
+  - export CXX="g++-4.8"
+
+script: ./.travis.sh
