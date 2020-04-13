@@ -31,10 +31,16 @@ class PlantSearchTest < Test::Unit::TestCase
 
     def test_all_plants_api_call
       get '/allplants'
-      
+
   		assert last_response.ok?
     	assert  last_response.body.include?('tomato')
   		assert last_response.body.include?('The tomato is the fruit of the tomato plant')
   		assert last_response.body.include?('https://s3.amazonaws.com/openfarm-project/production/media/pictures/attachments')
+
+      assert  last_response.body.include?('lettuce')
+  		assert last_response.body.include?('Lettuce is a cool weather crop and high temperatures will impede germination and/or cause the plant to bolt')
+
+      assert  last_response.body.include?('coriander')
+
     end
 end
