@@ -9,7 +9,7 @@ class PlantList
 		data = Hash.new
 		data[:name] =  @name
     data[:description] = @description
-    data[:thumbnail_url] = @image
+    data[:image] = @image
 		data
 	end
 end
