@@ -18,7 +18,8 @@ class PlantSearchTest < Test::Unit::TestCase
   	end
 
 		def test_basic_api_call
-    get '/api/tomato'
+      get '/api/tomato'
+
 			assert last_response.ok?
     	assert  last_response.body.include?('tomato')
 			assert last_response.body.include?('The tomato is the fruit of the tomato plant')
@@ -27,4 +28,13 @@ class PlantSearchTest < Test::Unit::TestCase
 			assert last_response.body.include?('90')
 			assert last_response.body.include?('https://s3.amazonaws.com/openfarm-project/production/media/pictures/attachments')
   	end
+
+    def test_all_plants_api_call
+      get '/allplants'
+      
+  		assert last_response.ok?
+    	assert  last_response.body.include?('tomato')
+  		assert last_response.body.include?('The tomato is the fruit of the tomato plant')
+  		assert last_response.body.include?('https://s3.amazonaws.com/openfarm-project/production/media/pictures/attachments')
+    end
 end
