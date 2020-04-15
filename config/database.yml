@@ -1,0 +1,24 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: plant_microservice
+  pool: 2
+  username: jerry 
+  password: password 
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: <%= ENV['DATABASE_HOST'] %>
+  database: <%= ENV['DATABASE_NAME'] %>
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: plant_microservice_test
+  pool: 2
+  username: jerry
+  password: password

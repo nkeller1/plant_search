@@ -19,6 +19,7 @@ class PlantSearchTest < Test::Unit::TestCase
 
 		def test_basic_api_call
     get '/api/tomato'
+			binding.pry
 			assert last_response.ok?
     	assert  last_response.body.include?('tomato')
 			assert last_response.body.include?('The tomato is the fruit of the tomato plant')
