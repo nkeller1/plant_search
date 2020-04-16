@@ -7,6 +7,7 @@ require 'sinatra/activerecord'
 require './allplants'
 require './name_search'
 require './models/plant.rb'
+require './find_plant.rb'
 
 set :database_file, 'config/database.yml'
 
@@ -22,8 +23,8 @@ class PlantSearch < Sinatra::Application
 		json NameSearch.connect(params[:term])
 	end
 
-	get '/api/plants/:id' do
-		json FindPlant.connect(params[:id])
+	get '/plant/:slug' do
+		json FindPlant.connect(params[:slug])
 	end
 
   get '/allplants' do
