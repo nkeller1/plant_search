@@ -8,6 +8,7 @@ require './allplants'
 require './name_search'
 require './models/plant.rb'
 require './find_plant.rb'
+require './environments.rb'
 
 set :database_file, 'config/database.yml'
 
