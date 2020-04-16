@@ -4,18 +4,13 @@ require 'pry'
 require 'sinatra/config_file'
 require 'sinatra/json'
 require 'sinatra/activerecord'
-require './allplants'
-require './name_search'
-require './models/plant.rb'
-require './find_plant.rb'
-require './environments.rb'
+require_relative './allplants'
+require_relative './name_search'
+require_relative './models/plant.rb'
+require_relative './find_plant.rb'
 
-set :database_file, 'config/database.yml'
 
-class PlantSearch < Sinatra::Application
-  register Sinatra::ConfigFile
-   config_file './config/application.yml'
-
+class PlantSearch < Sinatra::Base
 	get '/' do
 		"Hi"
 	end
