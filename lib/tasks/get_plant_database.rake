@@ -3,9 +3,6 @@ require 'pry'
 
 task :greet  do
 	require_relative '../../plant_search.rb'
-	system "rake db:drop"
-	system "rake db:create"
-	system "rake db:migrate"
 	counter = 0
 	8.times do
 		counter += 1
