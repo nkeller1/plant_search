@@ -1,11 +1,12 @@
 ENV['APP_ENV'] = 'test'
 
-
 require './plant_search.rb'
 require 'test/unit'
 require 'rack/test'
 require 'rubygems'
 require 'webmock'
+
+set :database_file, 'config/database.yml'
 
 
 class PlantSearchTest < Test::Unit::TestCase
@@ -18,8 +19,8 @@ class PlantSearchTest < Test::Unit::TestCase
   	end
 
 		def test_basic_api_call
-      get '/api/tomato'
-
+    get '/api/tomato'
+			binding.pry
 			assert last_response.ok?
     	assert  last_response.body.include?('tomato')
 			assert last_response.body.include?('The tomato is the fruit of the tomato plant')

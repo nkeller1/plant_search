@@ -1,4 +1,4 @@
-class Plant
+class ApiPlant
 
 	def initialize(data)
 		@name = data[:name]
