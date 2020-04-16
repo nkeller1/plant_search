@@ -4,12 +4,12 @@ require './api_plant'
 class FindPlant < Sinatra::Base
   def self.connect(slug)
     conn = Faraday.get("https://www.growstuff.org/crops/#{slug}.json")
-		if conn.body
-    	json = JSON.parse(conn.body,  symbolize_names: true)
-    	plant = ApiPlant.new(json)
-    	plant.info
+    json = JSON.parse(conn.body,  symbolize_names: true)
+		if json[:openfarm_data]
+	   plant = ApiPlant.new(json)
+ 	   plant.info
 		else
-			nil
+			"Bad Plant"
 		end
   end
 end
