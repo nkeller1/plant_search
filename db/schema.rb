@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_04_15_211812) do
     t.string "name"
     t.string "image"
     t.string "description"
-    t.bigint "api_id"
+    t.string "slug"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

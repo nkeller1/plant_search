@@ -3,8 +3,12 @@ require 'faraday'
 require 'pry'
 require 'sinatra/config_file'
 require 'sinatra/json'
-require './greeting'
 require 'sinatra/activerecord'
+require './allplants'
+require './name_search'
+require './models/plant.rb'
+
+set :database_file, 'config/database.yml'
 
 class PlantSearch < Sinatra::Application
   register Sinatra::ConfigFile
@@ -14,7 +18,15 @@ class PlantSearch < Sinatra::Application
 		"Hi"
 	end
 
-	get '/api/:name' do
-		json ApiPlant.connect(params[:name])
+	get '/api/:term' do
+		json NameSearch.connect(params[:term])
 	end
+
+	get '/api/plants/:id' do
+		json FindPlant.connect(params[:id])
+	end
+
+  get '/allplants' do
+    json AllPlants.connect
+  end
 end

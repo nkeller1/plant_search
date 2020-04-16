@@ -1,24 +1,21 @@
-development:
+default: &default
   adapter: postgresql
-  encoding: unicode
-  database: plant_microservice
-  pool: 2
-  username: jerry 
-  password: password 
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  database: db/development
+
+test:
+  <<: *default
+  database: db/test
 
 production:
   adapter: postgresql
   encoding: unicode
   pool: 5
-  host: <%= ENV['DATABASE_HOST'] %>
-  database: <%= ENV['DATABASE_NAME'] %>
-  username: <%= ENV['DATABASE_USER'] %>
-  password: <%= ENV['DATABASE_PASSWORD'] %>
-
-test:
-  adapter: postgresql
-  encoding: unicode
-  database: plant_microservice_test
-  pool: 2
-  username: jerry
-  password: password
+  host: <%= ENV['DATABASE_HOST'] || 'db' %>
+  database: <%= ENV['DATABASE_NAME'] || 'sinatra' %>
+  username: <%= ENV['DATABASE_USER'] || 'sinatra' %>
+  password: <%= ENV['DATABASE_PASSWORD'] || 'sinatra' %>
