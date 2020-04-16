@@ -1,12 +1,8 @@
-ENV['APP_ENV'] = 'test'
-
 require './plant_search.rb'
 require 'test/unit'
 require 'rack/test'
 require 'rubygems'
 require 'webmock'
-
-set :database_file, 'config/database.yml'
 
 
 class PlantSearchTest < Test::Unit::TestCase
