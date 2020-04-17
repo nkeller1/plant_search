@@ -16,19 +16,13 @@ class PlantSearchTest < Test::Unit::TestCase
 
 		def test_basic_api_call
     get '/api/tomato'
-			binding.pry
 			assert last_response.ok?
     	assert  last_response.body.include?('tomato')
 			assert last_response.body.include?('The tomato is the fruit of the tomato plant')
-			assert last_response.body.include?('last_harvest')
-			assert last_response.body.include?('height')
-			assert last_response.body.include?('90')
-			assert last_response.body.include?('https://s3.amazonaws.com/openfarm-project/production/media/pictures/attachments')
   	end
 
     def test_all_plants_api_call
       get '/allplants'
-
   		assert last_response.ok?
     	assert  last_response.body.include?('tomato')
   		assert last_response.body.include?('The tomato is the fruit of the tomato plant')
@@ -38,6 +32,12 @@ class PlantSearchTest < Test::Unit::TestCase
   		assert last_response.body.include?('Lettuce is a cool weather crop and high temperatures will impede germination and/or cause the plant to bolt')
 
       assert  last_response.body.include?('coriander')
-
     end
+
+		def test_individual_plant
+			get '/plant/tomato'
+			assert  last_response.body.include?('tomato')
+      assert last_response.body.include?('The tomato is the fruit of the tomato plant')
+      assert last_response.body.include?('https://s3.amazonaws.com/openfarm-project/production/media/pictures/attachments')
+		end
 end
